@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from fastapi.responses import JSONResponse
 import time
 from app.config import settings
 
@@ -8,14 +9,9 @@ START_TIME = time.time()
 
 
 @router.get("/health")
-def health_check() -> dict:
-    uptime_seconds = int(time.time() - START_TIME)
-    minutes, seconds = divmod(uptime_seconds, 60)
-    hours, minutes = divmod(minutes, 60)
-
-    return {
-        "status": "healthy",
-        "version": settings.APP_VERSION,
-        "environment": settings.ENVIRONMENT,
-        "uptime": f"{hours}h {minutes}m {seconds}s",
-    }
+def health_check() -> JSONResponse:
+    # 💥 INTENTIONAL BUG FOR ROLLBACK DEMO
+    return JSONResponse(
+        status_code=500,
+        content={"status": "error", "message": "Simulated failure for demo"}
+    )
