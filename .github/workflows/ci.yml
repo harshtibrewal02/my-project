@@ -92,8 +92,8 @@ jobs:
 
       - name: Wait for deployment to spin up
         run: |
-          echo "⏳ Waiting 90s for Render to deploy..."
-          sleep 90
+          echo "⏳ Waiting 180s for Render to deploy..."
+          sleep 180
 
       - name: Health check
         id: health
