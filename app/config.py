@@ -3,9 +3,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 class Settings:
-    APP_NAME = os.getenv("APP_NAME", "FastAPI App")
-    APP_VERSION = os.getenv("APP_VERSION", "1.0.0")
-    ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
+    APP_NAME: str = os.getenv("APP_NAME", "FastAPI App")
+    APP_VERSION: str = os.getenv("APP_VERSION", "1.0.0")
+    ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
+
 
 settings = Settings()

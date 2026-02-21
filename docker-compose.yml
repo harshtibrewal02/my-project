@@ -1,8 +1,11 @@
 version: "3.8"
 
 services:
-  fastapi-app:
-    build: .
+  app:
+    # Pulls from Docker Hub in CI/prod, builds locally in dev
+    image: ${DOCKER_IMAGE:-my-project:local}
+    build:
+      context: .
     ports:
       - "8000:8000"
     env_file:
